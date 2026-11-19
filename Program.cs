@@ -5,7 +5,7 @@
         static int sorokSzama = 10;
         static int oszlopokSzama = 6;
         static int[,] szamokMatrix = new int[sorokSzama, oszlopokSzama];
-        static int[,] negyzetesMatrix = new int[10, 10];
+        static int[,] negyzetesMatrix = new int[5, 5];
         static Random r = new Random();
         static void F01(int[,]matrix, int min, int max)
         {
@@ -64,6 +64,30 @@
                 Console.WriteLine($"A mátrix {j + 1}. oszlopába lévő elemek összege {ossz}");
             }
         }
+        static void Balatloosszeg(int[,] matrix)
+        {
+            int ossz = 0;
+            Console.Write("Az átló");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write($"{matrix[i,i], 5}");
+                ossz += matrix[i, i];
+            }
+            Console.WriteLine();
+            Console.WriteLine($"A mátrix bal átlójának összege:{ossz}");
+        }
+        static void Jobbatloosszeg(int[,] matrix)
+        {
+            int ossz = 0;
+            Console.Write("Az átló");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write($"{matrix[i, matrix.GetLength(1) - 1 - i],5}");
+                ossz += matrix[i, matrix.GetLength(1) - 1 - i];
+            }
+            Console.WriteLine();
+            Console.WriteLine($"A mátrix jobb átlójának összege:{ossz}");
+        }
         static void Main(string[] args)
         {
             F01(szamokMatrix, 10, 99);
@@ -73,8 +97,13 @@
             F04();
             Console.WriteLine("\n");
             F05();
-            F01(negyzetesMatrix, -100, 100);
+            Console.WriteLine("\n");
+            F01(negyzetesMatrix, 1,9);
+            Console.WriteLine("\n");
             F02(negyzetesMatrix);
+            Console.WriteLine("\n");
+            Balatloosszeg(negyzetesMatrix);
+            Jobbatloosszeg(negyzetesMatrix);
         }
     }
 }
