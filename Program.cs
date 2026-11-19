@@ -104,6 +104,13 @@
             Console.WriteLine("\n");
             Balatloosszeg(negyzetesMatrix);
             Jobbatloosszeg(negyzetesMatrix);
+            Console.WriteLine("\n");
+            int[,] masolat = negyzetesMatrix; // másolat megkapja  a negyzetesmatrix refenciacímét
+            masolat[0, 0] = 100;
+            Console.WriteLine("Másolat elemei:");
+            F02(masolat);
+            Console.WriteLine("Negyzetesmátrix:");
+            F02(negyzetesMatrix);
         }
     }
 }
